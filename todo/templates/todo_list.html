@@ -10,16 +10,19 @@
      <h1>Things I Need To Do...</h1>
 
      <table>
+          {% for item in items %}
           <tr>
-              <td>Plan Website</td>
-          </tr> 
-          <tr>
-              <td>Create Website</td>   
-          </tr>
-          <tr>
-              <td>Launch Website</td>
-          </tr>
+             {% if item.done %}
+             <td><strike>{{ item.name }}</strike></td>
+             {% else %}
+             <td>{{ item.name }}</td>
+             {% endif %}
+          </tr>   
+          {% empty %}
+          <p>You Have Nothing To Do.</p>
+          {% endfor %}
+
      </table>
-              
+
 </body>
 </html>
