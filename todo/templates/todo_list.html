@@ -17,12 +17,20 @@
              {% else %}
              <td>{{ item.name }}</td>
              {% endif %}
-          </tr>   
+
+           <td>
+              <form method="GET" action="edit/{{ item.id }}"><input type="submit" value="Edit"></form>
+           </td>
+        </tr>   
+
           {% empty %}
           <p>You Have Nothing To Do.</p>
           {% endfor %}
+          
+         
 
      </table>
 
+     <a href="add">Add An Item</a>
 </body>
 </html>
