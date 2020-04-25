@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.shortcuts import get_object_or_404
 from .models import Item
 
 
@@ -24,3 +25,8 @@ class TestViews(TestCase):
     def test_get_test_edit_page_for_item_that_doesnt_exist(self):
         page = self.client.get("/edit/1")
         self.assertEqual(page.status_code, 404)
+
+    def test_post_create_an_item(self):
+        response = self.client.post("/add", {"name": "Create A Test"})
+        item = get_object_or_404(Item, pk=1)
+        self.assertEqual(item.done, False)
